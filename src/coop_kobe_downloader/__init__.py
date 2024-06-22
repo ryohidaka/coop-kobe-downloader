@@ -11,7 +11,7 @@ def main():
     password = os.environ.get("PASSWORD")
 
     downloader = CoopKobeDownloader(login_id, password)
-    downloader.download()
+    downloader.download("2024062")
 
 
 class CoopKobeDownloader:
@@ -33,7 +33,7 @@ class CoopKobeDownloader:
         # 宅配ページの共通URLを定義
         self.base_url = "https://wwwckapp.coop-kobe.net"
 
-    def download(self):
+    def download(self, phase: str):
         """
         ダウンロード処理
         """
@@ -42,6 +42,9 @@ class CoopKobeDownloader:
 
         # 宅配ページにログインする
         self._login()
+
+        # 注文書をダウンロードする
+        self._download_csv(phase)
 
         # ChromeDriverを閉じる
         self.driver.quit()
@@ -84,3 +87,21 @@ class CoopKobeDownloader:
         # ログインボタンをクリック
         login_button = helper.find_element(By.CLASS_NAME, "p-mypage-part-btn--action")
         helper.click_button(login_button)
+
+    def _download_csv(self, phase: str):
+        """
+        注文書のCSVファイルをダウンロードする
+        """
+        helper = DriverHelper(self.driver)
+
+        # 注文履歴詳細画面に遷移
+        history_detail_url = (
+            f"{self.base_url}/order/member/historydetail.html?kikaku_ymkai={phase}"
+        )
+        helper.navigate_to_url(history_detail_url)
+
+        # ダウンロードボタンをクリック
+        download_button = helper.find_element(
+            By.CLASS_NAME, "p-order-history-detail-control__dl-btn"
+        )
+        helper.click_button(download_button)
