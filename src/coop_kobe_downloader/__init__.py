@@ -1,18 +1,25 @@
+import os
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
 
 
 def main():
-    downloader = CoopKobeDownloader()
+    login_id = os.environ.get("LOGIN_ID")
+    password = os.environ.get("PASSWORD")
+
+    downloader = CoopKobeDownloader(login_id, password)
     downloader.download()
 
 
 class CoopKobeDownloader:
-    def __init__(self):
+    def __init__(self, login_id: str, password: str):
         """
         CoopKobeDownloader クラスの初期化。
         """
+        # 認証情報を定義
+        self.login_id = login_id
+        self.password = password
 
         # ChromeDriverを取得
         try:
