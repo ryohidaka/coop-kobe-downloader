@@ -1,3 +1,4 @@
+from coop_kobe_downloader.logger import init_logger
 from selenium.webdriver import Chrome as webdriver_Chrome
 import time
 
@@ -11,6 +12,7 @@ class DriverHelper:
         * driver: webdriverのインスタンス
         * download_dir (str): ダウンロードディレクトリのパス
         """
+        self.logger = init_logger()
         self.driver = driver
 
     def navigate_to_url(self, url: str):
@@ -24,7 +26,7 @@ class DriverHelper:
             self.driver.get(url)
             time.sleep(5)
         except Exception as e:
-            print(f"ページ遷移時にエラーが発生しました: {e}")
+            self.logger.error(f"ページ遷移時にエラーが発生しました: {e}")
 
     def find_element(self, type, selector: str):
         """

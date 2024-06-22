@@ -2,6 +2,7 @@ import glob
 import os
 import time
 from coop_kobe_downloader.driver_helper import DriverHelper
+from coop_kobe_downloader.logger import init_logger
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options as ChromeOptions
 from selenium.webdriver.chrome.service import Service as ChromeService
@@ -23,6 +24,8 @@ class CoopKobeDownloader:
         """
         CoopKobeDownloader クラスの初期化。
         """
+        self.logger = init_logger()
+
         # 認証情報を定義
         self.login_id = login_id
         self.password = password
@@ -34,7 +37,7 @@ class CoopKobeDownloader:
         try:
             self.driver = self._get_chrome_driver()
         except Exception as e:
-            print(f"ChromeDriverの取得に失敗しました: {e}")
+            self.logger.error(f"ChromeDriverの取得に失敗しました: {e}")
             self.driver = None
 
         # 宅配ページの共通URLを定義
@@ -45,7 +48,9 @@ class CoopKobeDownloader:
         ダウンロード処理
         """
         if self.driver is None:
-            print("WebDriverが存在しないため、ダウンロード処理をスキップします。")
+            self.logger.error(
+                "WebDriverが存在しないため、ダウンロード処理をスキップします。"
+            )
 
         # 宅配ページにログインする
         self._login()
@@ -71,7 +76,7 @@ class CoopKobeDownloader:
             )
             return driver
         except Exception as e:
-            print(f"WebDriverのインスタンス作成に失敗しました: {e}")
+            self.logger.error(f"WebDriverのインスタンス作成に失敗しました: {e}")
             return None
 
     def _login(self):
