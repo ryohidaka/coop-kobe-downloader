@@ -13,7 +13,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 def main():
     login_id = os.environ.get("LOGIN_ID")
     password = os.environ.get("PASSWORD")
-    download_dir = "."
+    download_dir = ".output"
 
     downloader = CoopKobeDownloader(login_id, password, download_dir)
     downloader.download("2024062")
