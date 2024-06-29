@@ -11,6 +11,14 @@ dependencies = [
 ]
 readme = "README.md"
 requires-python = ">= 3.8"
+license = {file = "LICENSE"}
+keywords = ["coop","csv","parser","japanese","japan"]
+
+[project.urls]
+Homepage = "https://github.com/ryohidaka/coop-kobe-downloader"
+Repository = "https://github.com/ryohidaka/coop-kobe-downloader"
+Issues = "https://github.com/ryohidaka/coop-kobe-downloader/issues"
+Changelog = "https://github.com/ryohidaka/blob/main/coop-kobe-downloader/CHANGELOG.md"
 
 [project.scripts]
 "coop-kobe-downloader" = "coop_kobe_downloader:main"
