@@ -137,6 +137,7 @@ class CoopKobeDownloader:
         os.makedirs(self.download_dir, exist_ok=True)
 
         options = ChromeOptions()
+        options.add_argument("--headless=new")
         options.add_experimental_option(
             "prefs",
             {
