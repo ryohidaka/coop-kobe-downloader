@@ -52,6 +52,8 @@ class CoopKobeDownloader:
                 "WebDriverが存在しないため、ダウンロード処理をスキップします。"
             )
 
+        self.logger.info("ダウンロード処理を開始します。")
+
         # 宅配ページにログインする
         self._login()
 
@@ -60,6 +62,8 @@ class CoopKobeDownloader:
 
         # ChromeDriverを閉じる
         self.driver.quit()
+
+        self.logger.info("ダウンロード処理が完了しました。")
 
     def _get_chrome_driver(self) -> webdriver.Chrome:
         """
@@ -83,6 +87,7 @@ class CoopKobeDownloader:
         """
         宅配ページにログインする
         """
+        self.logger.info("ログイン処理を開始します。")
         helper = DriverHelper(self.driver)
 
         # ログイン画面に遷移
@@ -101,10 +106,14 @@ class CoopKobeDownloader:
         login_button = helper.find_element(By.CLASS_NAME, "p-mypage-part-btn--action")
         helper.click_button(login_button)
 
+        self.logger.info("ログイン処理が完了しました。")
+
     def _download_csv(self, phase: str):
         """
         注文書のCSVファイルをダウンロードする
         """
+        self.logger.info("CSVファイルのダウンロードを開始します。")
+
         helper = DriverHelper(self.driver)
 
         # 注文履歴詳細画面に遷移
@@ -112,6 +121,8 @@ class CoopKobeDownloader:
             f"{self.base_url}/order/member/historydetail.html?kikaku_ymkai={phase}"
         )
         helper.navigate_to_url(history_detail_url)
+
+        self.logger.info("注文履歴詳細画面にアクセスしました。")
 
         # ダウンロードボタンをクリック
         download_button = helper.find_element(
@@ -121,6 +132,8 @@ class CoopKobeDownloader:
 
         # ファイルダウンロード完了まで待機する
         self._wait_for_download()
+
+        self.logger.info("CSVファイルのダウンロードが完了しました。")
 
     def _get_chrome_options(self) -> ChromeOptions:
         """
