@@ -160,9 +160,8 @@ class CoopKobeDownloader:
                 ".crdownload" not in os.path.splitext(file)[1]
                 for file in downloaded_files
             ):
-                time.sleep(2)
-                return
+                return  # ダウンロードが成功した場合は正常終了
 
-            # インデックスがtimeout_secondに達した場合にのみエラーを発生させる
-            if i == timeout_second - 1:
-                raise TimeoutError("ダウンロードが指定時間内に完了しませんでした。")
+            time.sleep(1)
+
+        raise TimeoutError("ダウンロードが指定時間内に完了しませんでした。")
