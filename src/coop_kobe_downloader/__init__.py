@@ -169,7 +169,7 @@ class CoopKobeDownloader:
         for i in range(timeout_second):
             downloaded_files = glob.glob(f"{os.path.realpath(self.download_dir)}\\*.*")
 
-            if any(
+            if all(
                 ".crdownload" not in os.path.splitext(file)[1]
                 for file in downloaded_files
             ):
