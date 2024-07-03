@@ -45,6 +45,9 @@ class CoopKobeDownloader:
     def download(self, phase: str):
         """
         ダウンロード処理
+
+        Parameters:
+        * phase: 企画回 (例: `2024062`)
         """
         if self.driver is None:
             self.logger.error(
