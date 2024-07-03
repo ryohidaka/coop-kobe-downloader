@@ -1,4 +1,4 @@
-from coop_kobe_downloader.logger import init_logger
+from .logger import init_logger
 from selenium.webdriver import Chrome as webdriver_Chrome
 import time
 

@@ -1,8 +1,7 @@
 import glob
 import os
 import time
-from coop_kobe_downloader.driver_helper import DriverHelper
-from coop_kobe_downloader.logger import init_logger
+from coop_kobe_downloader.lib import DriverHelper, init_logger
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options as ChromeOptions
 from selenium.webdriver.chrome.service import Service as ChromeService
