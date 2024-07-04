@@ -194,3 +194,6 @@ class CoopKobeDownloader:
             time.sleep(1)
 
         raise TimeoutError("ダウンロードが指定時間内に完了しませんでした。")
+
+
+__all__ = [CoopKobeDownloader, Weekday]
