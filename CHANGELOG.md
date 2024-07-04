@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.2](https://github.com/ryohidaka/coop-kobe-downloader/compare/v0.2.1...v0.2.2) (2024-07-04)
+
+
+### Documentation
+
+* CHANGELOGを修正 ([f820d0e](https://github.com/ryohidaka/coop-kobe-downloader/commit/f820d0ec165545a4ac9afda21956dde6b2c79e75))
+
 ## [0.2.1](https://github.com/ryohidaka/coop-kobe-downloader/compare/v0.2.0...v0.2.1) (2024-07-04)
 
 
@@ -45,4 +52,3 @@
 * パッケージ名と説明文を変更 ([ca09acd](https://github.com/ryohidaka/coop-kobe-downloader/commit/ca09acd45f50518659b751244c03aa883d3d7675))
 * パッケージ情報を更新 ([fd26911](https://github.com/ryohidaka/coop-kobe-downloader/commit/fd269116eef626c7875f179ffe2caf5cd5644bc1))
 * 使用方法を追記 ([8de1a47](https://github.com/ryohidaka/coop-kobe-downloader/commit/8de1a478be5cdbc483382b7f6073957d6b6ab022))
-
