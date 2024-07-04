@@ -69,7 +69,7 @@ class CoopKobeDownloader:
 
         self.logger.info("ダウンロード処理が完了しました。")
 
-    def get_phase(self, offset: int = 0) -> str:
+    def get_phase(self, weekday: Weekday, offset: int = 0) -> str:
         """
         企画回を取得
 
@@ -79,7 +79,7 @@ class CoopKobeDownloader:
           * 過去の回: `-n`
           * 未来の回: `n`
         """
-        return get_weekday_str(offset)
+        return get_weekday_str(weekday, offset)
 
     def _get_chrome_driver(self) -> webdriver.Chrome:
         """
