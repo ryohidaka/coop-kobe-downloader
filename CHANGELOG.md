@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.3](https://github.com/ryohidaka/coop-kobe-downloader/compare/v0.2.2...v0.2.3) (2024-07-04)
+
+
+### Bug Fixes
+
+* Weekdayクラスが参照できない不具合を修正 ([ca3cf26](https://github.com/ryohidaka/coop-kobe-downloader/commit/ca3cf26d3e4e4651398d722a4da8dd3a985ad500))
+
 ## [0.2.2](https://github.com/ryohidaka/coop-kobe-downloader/compare/v0.2.1...v0.2.2) (2024-07-04)
 
 
