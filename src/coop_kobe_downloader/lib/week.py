@@ -1,4 +1,3 @@
-import calendar
 from datetime import date, timedelta
 from enum import Enum
 
@@ -36,37 +35,41 @@ def get_weekday_str(weekday: Weekday, offset: int = 0) -> str:
     days_until_target = (today_weekday - target_weekday) % 7
 
     # 対象の日付を計算（オフセットに基づいて調整）
-    target_day = today - timedelta(days=days_until_target) - timedelta(weeks=offset - 1)
+    target_day = today - timedelta(days=days_until_target) - timedelta(weeks=offset + 1)
 
     # 年、月、日を取得
     year = target_day.year
     month = target_day.month
     day = target_day.day
 
-    # get_nth_week関数を呼び出して結果を取得
-    res = get_nth_week(year, month, day)
+    # get_nth_occurrence関数を呼び出して結果を取得
+    nth_occurrence = get_nth_occurrence(year, month, day, weekday)
 
     # 年、月、結果を文字列として結合して返す
-    return f"{year}{str(month).zfill(2)}{res}"
+    return f"{year}{str(month).zfill(2)}{nth_occurrence}"
 
 
-def get_nth_week(year: int, month: int, day: int, first_weekday: int = 0) -> int:
+def get_nth_occurrence(year: int, month: int, day: int, weekday: Weekday) -> int:
     """
-    指定された日付が月の第何週目に当たるかを計算します。
+    指定された日付がその月の指定された曜日の何回目かを計算します。
 
     Parameters:
     * year: 年
     * month: 月
     * day: 日
-    * first_weekday: 週の最初の曜日（デフォルトは`0`: 月曜日）
+    * weekday: 対象の曜日（`Weekday`列挙型）
 
-    Return: 第何週目かを示す整数
+    Return: 指定された曜日のその月での何回目かを示す整数
     """
-    # 月の最初の日の曜日を取得
-    first_dow = calendar.monthrange(year, month)[0]
+    # 月の最初の日を取得
+    first_day = date(year, month, 1)
 
-    # 週の開始曜日に基づいてオフセットを計算
-    offset = (first_dow - first_weekday) % 7
+    # 月の最初の指定された曜日を見つける
+    first_target_day = first_day + timedelta(
+        days=(weekday.value - first_day.isoweekday() + 7) % 7
+    )
 
-    # 指定された日が第何週目かを計算
-    return (day + offset - 1) // 7 + 1
+    # 指定された日が何回目の対象曜日かを計算
+    occurrence = ((day - first_target_day.day) // 7) + 1
+
+    return occurrence

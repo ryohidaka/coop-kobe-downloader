@@ -76,8 +76,8 @@ class CoopKobeDownloader:
         Parameters:
         * offset: 企画回のオフセット (デフォルト: 0)
           * デフォルト: `0`
-          * 過去の回: `-n`
-          * 未来の回: `n`
+          * 過去の回: `n`
+          * 未来の回: `-n`
         """
         return get_weekday_str(weekday, offset)
 
