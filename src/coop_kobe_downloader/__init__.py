@@ -1,7 +1,7 @@
 import glob
 import os
 import time
-from coop_kobe_downloader.lib import DriverHelper, init_logger
+from coop_kobe_downloader.lib import DriverHelper, Weekday, get_weekday_str, init_logger
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options as ChromeOptions
 from selenium.webdriver.chrome.service import Service as ChromeService
@@ -15,7 +15,8 @@ def main():
     download_dir = ".output"
 
     downloader = CoopKobeDownloader(login_id, password, download_dir)
-    downloader.download("2024062")
+    phase = downloader.get_phase(Weekday.WED)
+    downloader.download(phase)
 
 
 class CoopKobeDownloader:
@@ -55,6 +56,7 @@ class CoopKobeDownloader:
             )
 
         self.logger.info("ダウンロード処理を開始します。")
+        self.logger.info(f"企画回: {phase}")
 
         # 宅配ページにログインする
         self._login()
@@ -66,6 +68,18 @@ class CoopKobeDownloader:
         self.driver.quit()
 
         self.logger.info("ダウンロード処理が完了しました。")
+
+    def get_phase(self, offset: int = 0) -> str:
+        """
+        企画回を取得
+
+        Parameters:
+        * offset: 企画回のオフセット (デフォルト: 0)
+          * デフォルト: `0`
+          * 過去の回: `-n`
+          * 未来の回: `n`
+        """
+        return get_weekday_str(offset)
 
     def _get_chrome_driver(self) -> webdriver.Chrome:
         """

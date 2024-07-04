@@ -17,7 +17,7 @@ pip install coop-kobe-downloader
 ## 使用方法
 
 ```py
-from coop_kobe_downloader import CoopKobeDownloader
+from coop_kobe_downloader import CoopKobeDownloader, Weekday
 
 # ログインID
 login_id = "hoge@example.com"
@@ -31,8 +31,13 @@ download_dir = ".output"
 # ダウンローダーのインスタンスを作成
 downloader = CoopKobeDownloader(login_id, password, download_dir)
 
-# ダウンロード処理　(例: 2024年6月2週)
-downloader.download("2024062")
+# 企画回を取得
+phase = downloader.get_phase(Weekday.WED)
+print(phase)
+# output: 2024062
+
+# ダウンロード処理
+downloader.download(phase)
 ```
 
 ## License
