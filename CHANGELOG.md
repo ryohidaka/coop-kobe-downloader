@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.4](https://github.com/ryohidaka/coop-kobe-downloader/compare/v0.2.3...v0.2.4) (2024-07-04)
+
+
+### Bug Fixes
+
+* 企画回取得処理を修正 ([c300889](https://github.com/ryohidaka/coop-kobe-downloader/commit/c300889a8b1edd39969a02b8271caf525f85986a))
+
 ## [0.2.3](https://github.com/ryohidaka/coop-kobe-downloader/compare/v0.2.2...v0.2.3) (2024-07-04)
 
 
