@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.5](https://github.com/ryohidaka/coop-kobe-downloader/compare/v0.2.4...v0.2.5) (2024-07-17)
+
+
+### Bug Fixes
+
+* ダウンロードボタンが画面外にある場合も押下できるように修正 ([b06b071](https://github.com/ryohidaka/coop-kobe-downloader/commit/b06b0714d4f37b6fbd6c05cd4c1238be233aa619))
+
 ## [0.2.4](https://github.com/ryohidaka/coop-kobe-downloader/compare/v0.2.3...v0.2.4) (2024-07-04)
 
 
