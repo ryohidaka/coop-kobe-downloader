@@ -63,5 +63,5 @@ class DriverHelper:
         Parameters:
         * button: クリックするボタン
         """
-        button.click()
+        self.driver.execute_script("arguments[0].click();", button)
         time.sleep(2)
