@@ -1,6 +1,6 @@
 [project]
 name = "coop-kobe-downloader"
-version = "0.2.5"
+version = "0.3.0"
 description = "Add your description here"
 authors = [
     { name = "ryohidaka", email = "39184410+ryohidaka@users.noreply.github.com" }

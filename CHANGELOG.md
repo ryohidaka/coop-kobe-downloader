@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.3.0](https://github.com/ryohidaka/coop-kobe-downloader/compare/v0.2.5...v0.3.0) (2024-07-31)
+
+
+### ⚠ BREAKING CHANGES
+
+* webdriver-managerを更新
+
+### Features
+
+* webdriver-managerを更新 ([83f3d2b](https://github.com/ryohidaka/coop-kobe-downloader/commit/83f3d2b95cad154bbd4cfad8117b07138505b7a4))
+
 ## [0.2.5](https://github.com/ryohidaka/coop-kobe-downloader/compare/v0.2.4...v0.2.5) (2024-07-17)
 
 
