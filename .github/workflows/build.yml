@@ -19,4 +19,10 @@ jobs:
           version: "latest"
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
-      - run: rye build --clean
+      - run: |
+          rye sync
+          rye build --clean
+          rye run coop-kobe-downloader
+        env:
+          LOGIN_ID: ${{ secrets.LOGIN_ID }}
+          PASSWORD: ${{ secrets.PASSWORD }}
