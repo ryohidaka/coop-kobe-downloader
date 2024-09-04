@@ -15,7 +15,7 @@ def main():
     download_dir = ".output"
 
     downloader = CoopKobeDownloader(login_id, password, download_dir)
-    phase = downloader.get_phase(Weekday.WED)
+    phase = downloader.get_phase(Weekday.WED, 2)
     downloader.download(phase)
 
 
