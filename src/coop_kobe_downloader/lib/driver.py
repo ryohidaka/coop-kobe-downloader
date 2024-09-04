@@ -41,6 +41,10 @@ class DriverHelper:
         """
         elements = self.driver.find_elements(type, selector)
         if elements:
+            # 画面外の要素をスクロールして表示
+            self.driver.execute_script(
+                "arguments[0].scrollIntoView(true);", elements[0]
+            )
             return elements[0]
         else:
             raise Exception(f"Element not found: {selector}")
