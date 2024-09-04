@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.3.1](https://github.com/ryohidaka/coop-kobe-downloader/compare/v0.3.0...v0.3.1) (2024-09-04)
+
+
+### Bug Fixes
+
+* 動作確認用コードのオフセットを2に変更 ([659929b](https://github.com/ryohidaka/coop-kobe-downloader/commit/659929b28fcc221259bf028060837992e6588734))
+* 画面外の要素を取得できるように修正 ([065635c](https://github.com/ryohidaka/coop-kobe-downloader/commit/065635cd2a60de4f81b7b08eac9047f60465bf2d))
+
 ## [0.3.0](https://github.com/ryohidaka/coop-kobe-downloader/compare/v0.2.5...v0.3.0) (2024-07-31)
 
 
